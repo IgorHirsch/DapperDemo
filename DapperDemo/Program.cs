@@ -1,7 +1,24 @@
+using DapperDemo.Data;
+using DapperDemo.Repository;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+
+
+// Add services to the container
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+builder.Services.AddScoped<ICompanyRepository, CompanyRepositoryEF>();
+
+
+
+
 
 var app = builder.Build();
 
