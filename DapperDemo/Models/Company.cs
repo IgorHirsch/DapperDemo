@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+
 namespace DapperDemo.Models
 {
     public class Company
@@ -10,5 +12,8 @@ namespace DapperDemo.Models
         public string City { get; set; }
         public string State { get; set; }
         public string PostalCode { get; set; }
+
+        [ValidateNever] // <<< DAS ist entscheidend
+        public List<Employee> Employees { get; set; }
     }
 }

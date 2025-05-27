@@ -49,6 +49,14 @@ namespace DapperDemo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CompanyId,Name,Address,City,State,PostalCode")] Company company)
         {
+            foreach (var key in ModelState.Keys)
+            {
+                var state = ModelState[key];
+                foreach (var error in state.Errors)
+                {
+                    Console.WriteLine($"ModelState Error for '{key}': {error.ErrorMessage}");
+                }
+            }
             if (ModelState.IsValid)
             {
                 _compRepo.Add(company);
