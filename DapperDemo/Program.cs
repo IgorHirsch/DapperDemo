@@ -19,6 +19,7 @@ builder.Services.AddScoped<ICompanyRepository, CompanyRepositoryEF>();
 
 //builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepositorySP>();
+builder.Services.AddScoped<ICompanyRepository, CompanyRepositoryContrib>();
 
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
